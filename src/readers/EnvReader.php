@@ -25,7 +25,7 @@ class EnvReader extends AbstractReader
             throw new UnsupportedFileTypeException('for .env support require `vlucas/phpdotenv` in your composer.json');
         }
         $info = pathinfo($path);
-        $dotenv = new \Dotenv\Dotenv($info['dirname'], $info['basename']);
+        $dotenv = \Dotenv\Dotenv::create($info['dirname'], $info['basename']);
         $oldenvs = $_ENV;
         $dotenv->load();
         $newenvs = $_ENV;
